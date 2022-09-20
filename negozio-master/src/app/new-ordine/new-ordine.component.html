@@ -1,0 +1,41 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+  <!--{{f.form // f.form.value | json}}-- visualizzare proprietà form-->
+  <div class="form-group">
+    <label>Cliente</label>
+    <!--[()] --- sia input che output, al cambiare dell'input nel form
+cambia anche la tabella -->
+    <!--[] -- solo input-->
+    <!--() -- solo output-->
+    <select class="form-control" formControlName="idCliente">
+      <option *ngFor="let cliente of clienti" value="{{cliente.idCliente}}">{{cliente.nome}}
+        - {{cliente.idCliente}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Prodotti</label>
+    <br>
+<!--    <ng-container *ngFor="let product of products">-->
+<!--      <input type="checkbox" name="listaProdotti" value="{{product.id}}" formControlName="listaProdotti">-->
+<!--      - {{product.nome}}-->
+<!--      <br>-->
+<!--    </ng-container>-->
+  </div>
+  <label formArrayName="listaProdotti" *ngFor="let order of ordersFormArray.controls; let i = index">
+    <input type="checkbox" [formControlName]="i">
+    {{products[i].nome}} - QUANTITA PRODOTTO
+  </label>
+
+  <div class="form-group">
+    <label>Data Ordine: </label>
+    <input type="date" formControlName="data">
+  </div>
+
+  <div class="form-group form-footer">
+    <button class="button" type="submit">Submit</button>
+
+    <button class="btn btn-success" (click)="invia()">INVIA</button>
+    <button class="btn btn-secondary" (click)="resetForm()">RESET</button>
+  </div>
+</form>
+
+

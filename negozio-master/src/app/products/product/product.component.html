@@ -1,0 +1,15 @@
+<div class='container-menu'>
+
+    <button mat-raised-button [matMenuTriggerFor]="ordini">ORDINI</button>
+    <mat-menu #ordini="matMenu">
+        <a routerLink="/newOrder"><button mat-menu-item>> Nuovo</button></a>
+        <a routerLink="/orderList"><button mat-menu-item>> Lista ordini</button></a>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="clienti">CLIENTI</button>
+    <mat-menu #clienti="matMenu">
+        <a routerLink="/newClient"><button mat-menu-item>> Nuovo</button></a>
+        <a routerLink="/clientList"><button mat-menu-item>> Lista clienti</button></a>
+    </mat-menu>
+
+</div>
